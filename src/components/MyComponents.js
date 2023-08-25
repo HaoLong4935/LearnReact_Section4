@@ -14,6 +14,23 @@ class MyComponents extends React.Component {
 
   handleClick(event) {
     console.log("I'm clicked");
+    console.log("My name is", this.state.name);
+
+    //Khái niệm MergeState => Thuộc về React Class
+    //Nó đủ thông minh để biết giá trị nào thay đổi
+    //Và giá trị nào cũ để giữ nguyên
+    //Nên ta có 2 cách để thay đổi giá trị của đối tượng state
+
+    //Cách 1: Ta viết gộp vào trong này , React nó tự hiểu
+    this.setState({
+      name: "ANH LONG VIP PRO",
+      age: Math.floor(Math.random() * 100 + 1),
+    });
+
+    //Cách 2: Ta viết riêng lẻ ra
+    // this.setState({
+    //   age: Math.floor(Math.random() * 100 + 1),
+    // });
   }
 
   mouseOnHover(event) {
@@ -25,9 +42,18 @@ class MyComponents extends React.Component {
   render() {
     return (
       <div>
-        <h1>My name is {this.state.name}</h1>
+        <h1>
+          My name is {this.state.name} and năm nay I'm {this.state.age} years
+          old
+        </h1>
         {/* Cần phải có từ khóa this , vì ta khai báo trong class nên cần tham chiếu đến phương thức đó bằng this */}
-        <button onClick={this.handleClick}>Click me</button>
+        <button
+          onClick={(event) => {
+            this.handleClick(event);
+          }}
+        >
+          Click me
+        </button>
         <button onMouseOver={this.mouseOnHover}>Mouse on me</button>
       </div>
     );
