@@ -11,10 +11,24 @@ class MyComponents extends React.Component {
     address: "Da Nang",
     age: 26,
   };
+
+  handleClick(event) {
+    console.log("I'm clicked");
+  }
+
+  mouseOnHover(event) {
+    //Có những thuộc tính của event nên xem bên devtools
+    console.log(event.target);
+    console.log(event.pageX);
+  }
+
   render() {
     return (
       <div>
         <h1>My name is {this.state.name}</h1>
+        {/* Cần phải có từ khóa this , vì ta khai báo trong class nên cần tham chiếu đến phương thức đó bằng this */}
+        <button onClick={this.handleClick}>Click me</button>
+        <button onMouseOver={this.mouseOnHover}>Mouse on me</button>
       </div>
     );
   }
