@@ -39,6 +39,17 @@ class MyComponents extends React.Component {
     console.log(event.pageX);
   }
 
+  handleOnChange = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
@@ -46,17 +57,18 @@ class MyComponents extends React.Component {
           My name is {this.state.name} and năm nay I'm {this.state.age} years
           old
         </h1>
-        {/* Cần phải có từ khóa this , vì ta khai báo trong class nên cần tham chiếu đến phương thức đó bằng this */}
-        <button
-          onClick={(event) => {
-            this.handleClick(event);
-          }}
-        >
-          Click me
-        </button>
-        <button onMouseOver={this.mouseOnHover}>Mouse on me</button>
+        <form onSubmit={(event) => { this.handleOnSubmit(event); }} >
+          <input
+            type="text" onChange={(event) => {
+              this.handleOnChange(event);
+            }}
+          />
+          <button>Submit</button>
+        </form>
       </div>
     );
+
+    <h2></h2>;
   }
 }
 
