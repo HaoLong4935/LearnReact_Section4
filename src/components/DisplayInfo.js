@@ -10,17 +10,20 @@ class DisplayInfo extends React.Component {
         console.log(this.props);
 
         //Cách khác để lấy các giá trị của thuộc tính , trường hợp các thuộc tính bên thằng cha nó nhiều
-        const { name, age } = this.props;
+        const { lisUsers } = this.props;
 
         //Props : Viết tắt của properties 
         return (
             <div>
-                <div>
-                    My name is {name}
-                </div>
-                <div>
-                    My age is {age}
-                </div>
+                {lisUsers.map((user) => {
+                    return (
+                        <div key={user.id}>
+                            <h5>Hello my name is: {user.name} </h5>
+                            <h6>And my age is: {user.age}</h6>
+                            <hr></hr>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
