@@ -1,4 +1,13 @@
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
 body {
+    padding: 10px;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -43,6 +52,7 @@ code {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }

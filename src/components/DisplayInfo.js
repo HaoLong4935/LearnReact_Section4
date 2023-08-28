@@ -1,7 +1,15 @@
 import React from "react";
 
 class DisplayInfo extends React.Component {
+    state = {
+        isHideShow: true
+    }
 
+    handleClick = () => {
+        this.setState({
+            isHideShow: !this.state.isHideShow
+        })
+    }
 
     render() {
         //Có thể viết code javascrip trước từ return 
@@ -15,15 +23,24 @@ class DisplayInfo extends React.Component {
         //Props : Viết tắt của properties 
         return (
             <div>
-                {lisUsers.map((user) => {
-                    return (
-                        <div key={user.id}>
-                            <h5>Hello my name is: {user.name} </h5>
-                            <h6>And my age is: {user.age}</h6>
-                            <hr></hr>
+                <div>
+                    <span onClick={() => { this.handleClick() }}> {this.state.isHideShow ? "Hide list users" : "Show list users"}</span>
+                </div>
+                <div>
+                    {this.state.isHideShow &&
+                        <div>
+                            {lisUsers.map((user) => {
+                                return (
+                                    <div key={user.id} className={user.age <= 18 ? "green" : "red"}>
+                                        <div>Ten toi la: {user.name}</div>
+                                        <div>Toi nam nay la: {user.age} tuoi</div>
+                                        <hr></hr>
+                                    </div>
+                                )
+                            })}
                         </div>
-                    )
-                })}
+                    }
+                </div>
             </div>
         )
     }

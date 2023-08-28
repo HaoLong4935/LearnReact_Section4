@@ -1,6 +1,6 @@
 import React from "react";
 
-class UserIfo extends React.Component {
+class AddUserIfo extends React.Component {
     //Nó dùng cú pháp JSX : Cho phép có thể viết code js bên trong code của html
 
     //Định nghĩa state là một đối tượng có các thuộc tính
@@ -32,8 +32,15 @@ class UserIfo extends React.Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        this.props.handleCreateUser({
+            id: Math.floor((Math.random() * 100) + 1),
+            name: this.state.name,
+            age: this.state.age,
+            address: this.state.address
+        });
     };
+
+
     render() {
         return (
             <div>
@@ -52,4 +59,4 @@ class UserIfo extends React.Component {
     }
 }
 
-export default UserIfo
+export default AddUserIfo
