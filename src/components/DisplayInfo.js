@@ -1,8 +1,13 @@
 import React from "react";
+import './DisplayInfo.scss'
+import logo from './../logo.svg'
 
 class DisplayInfo extends React.Component {
-    state = {
-        isHideShow: true
+    constructor(props) {
+        super(props)
+        this.state = {
+            isHideShow: true
+        }
     }
 
     handleClick = () => {
@@ -22,23 +27,29 @@ class DisplayInfo extends React.Component {
 
         //Props : Viết tắt của properties 
         return (
-            <div>
+            <div className="DisplayInfo-block-container">
+                <img src={logo} />
                 <div>
                     <span onClick={() => { this.handleClick() }}> {this.state.isHideShow ? "Hide list users" : "Show list users"}</span>
                 </div>
                 <div>
                     {this.state.isHideShow &&
-                        <div>
+                        <>
                             {lisUsers.map((user) => {
                                 return (
                                     <div key={user.id} className={user.age <= 18 ? "green" : "red"}>
-                                        <div>Ten toi la: {user.name}</div>
-                                        <div>Toi nam nay la: {user.age} tuoi</div>
+                                        <div>
+                                            <div>Ten toi la: {user.name}</div>
+                                            <div>Toi nam nay la: {user.age} tuoi</div>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => { this.props.handleDeleteUser(user.id) }}>Delete</button>
+                                        </div>
                                         <hr></hr>
                                     </div>
                                 )
                             })}
-                        </div>
+                        </>
                     }
                 </div>
             </div>
