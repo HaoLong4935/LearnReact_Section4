@@ -1,7 +1,13 @@
+import videoHomePage from '../../asset/video-homepage.mp4'
+
 const HomePage = () => {
     return (
         <div className="homepage-container">
-            HOME PAGE CONTAINT
+            <video autoPlay muted loop>
+                <source
+                    src={videoHomePage}
+                    type='video/mp4' />
+            </video>
         </div>
     )
 }
